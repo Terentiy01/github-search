@@ -5,10 +5,10 @@ function Navigation() {
     <div className="flex justify-between items-center h-[50px] px-5 shadow-md bg-gray-500 text-white">
       <h3 className="font-bold">Github Поиск</h3>
       <span>
-        <Link to="/githubSearch" className="mr-2">
+        <Link to="/" className="mr-2">
           Главная
         </Link>
-        <Link to="/githubSearch/favourites">Избранное</Link>
+        <Link to="/favourites">Избранное</Link>
       </span>
     </div>
   )
