@@ -28,10 +28,6 @@ function HomePage() {
 
   return (
     <div className="flex justify-center pt-10 mx-auto h-screen w-screen">
-      {isError && (
-        <p className="text-center text-red-600">Что-то пошло не так...</p>
-      )}
-
       <div className="relative w-[560px]">
         <input
           type="text"
@@ -40,7 +36,11 @@ function HomePage() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-
+        {isError && (
+          <p className="text-center text-red-600 mb-2 font-bold">
+            Что-то пошло не так...
+          </p>
+        )}
         {dropdown && (
           <ul className="list-none absolute top-[42px] left-0 right-0 max-h-[200px] overflow-y-scroll shadow-md bg-white">
             {isLoading && <p className="text-center">Загрузка...</p>}
@@ -48,7 +48,7 @@ function HomePage() {
               <li
                 key={user.id}
                 onClick={() => clickHandler(user.login)}
-                className="py-2 px-4 hover:bg-gray-500 hover:text-white transition-colors cursor-pointer"
+                className="py-2 px-4 hover:bg-[#1a2d47f8] hover:text-white transition-colors cursor-pointer"
               >
                 {user.login}
               </li>

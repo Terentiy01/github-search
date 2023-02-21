@@ -1,18 +1,45 @@
+import { useActions } from '../hooks/actions'
 import { useAppSelector } from '../hooks/redux'
 
 function FavouritesPage() {
+  const { removeFavourite } = useActions()
   const { favourites } = useAppSelector((state) => state.github)
 
+  const removeFromFavourite = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    f: string
+  ) => {
+    e.preventDefault()
+
+    const shouldRemove = window.confirm('Вы уверены?')
+    if (shouldRemove) {
+      removeFavourite(f)
+    }
+  }
+
   if (favourites.length === 0)
-    return <p className="text-center">Нет избранных.</p>
+    return <p className="flex justify-center pt-10">В избранном ничего нет.</p>
 
   return (
-    <div className="flex justify-center pt-10 mx-auto h-screen w-screen">
+    <div className="flex justify-center pt-10 mx-auto">
       <ul className="list-none">
-        {favourites.map((f) => (
-          <li key={f}>
+        {favourites?.map((f, index) => (
+          <li
+            key={f}
+            className="border py-3 px-5 rounded mb-2 hover:shadow-md hover:bg-gray-100 transition-all"
+          >
             <a href={f} target="_blank">
-              {f}
+              <p className="text-sm">
+                <span className="font-bold">
+                  {index + 1}.&nbsp;{f}
+                </span>
+              </p>
+              <button
+                className="mt-2 py-2 px-4 bg-red-500 rounded hover:shadow-md text-white transition-all"
+                onClick={(e) => removeFromFavourite(e, f)}
+              >
+                Удалить
+              </button>
             </a>
           </li>
         ))}
