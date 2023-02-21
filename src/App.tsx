@@ -9,8 +9,11 @@ const App = () => {
       <BrowserRouter>
         <Navigation />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/favourites" element={<FavouritesPage />} />
+          <Route path="/github-search" element={<HomePage />} />
+          <Route
+            path="/github-search/favourites"
+            element={<FavouritesPage />}
+          />
         </Routes>
       </BrowserRouter>
     </>
