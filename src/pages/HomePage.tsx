@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { RepoCard } from '../components/RepoCard'
 import { useDebounce } from '../hooks/debounce'
 import {
   useLazyGetUserReposQuery,
@@ -60,7 +61,7 @@ function HomePage() {
             <p className="text-center">Загрузка репозиториев...</p>
           )}
           {repos?.map((repo) => (
-            <p>{repo.url}</p>
+            <RepoCard repo={repo} key={repo.id} />
           ))}
         </div>
       </div>
